@@ -151,8 +151,8 @@ export default {
                 console.log('this os is web')
                 console.log('gtm_data_onWeb --> ', gtm_data_onWeb)
 
-                //*******HOLD */
-                //this.openLineChat()
+                //REDIRECT *******
+                this.openLineChat()
               } else {
                 var gtm_data_onMobile = {
                   botUserId: this.$route.query.botUserId, //use รับค่าจาก api
