@@ -1,6 +1,6 @@
 <template>
   <div id="header">
-    <h3>HI CONGRATULATIONS LIFF IN WEB</h3>
+    <h3>LIFF CONTROL ** LIFF IN WEB</h3>
     <p>{{ profile.displayName }}</p>
     <h3>lineUserId</h3>
     <p>{{ profile.userId }}</p>
@@ -152,7 +152,8 @@ export default {
                 console.log('gtm_data_onWeb --> ', gtm_data_onWeb)
 
                 //REDIRECT *******
-                this.openLineChat()
+                //this.openLineChat()
+                this.findIpAndUpdateLineUid(this.profile.userId)
               } else {
                 var gtm_data_onMobile = {
                   botUserId: this.$route.query.botUserId, //use รับค่าจาก api
@@ -168,6 +169,33 @@ export default {
         })
         .catch(err => {
           this.occoredError = 'error:' + err
+        })
+    },
+    async findIpAndUpdateLineUid(getLineUid) {
+      const setData = {
+        ipAddress: this._getIpAddress,
+        lineUid: getLineUid,
+      }
+      let config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'https://schoolshopapi-production.up.railway.app/api/audience/findIpAndUpdate',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: setData,
+      }
+
+      axios
+        .request(config)
+        .then(response => {
+          // console.log(JSON.stringify(response.data))
+          console.log('update lineUid OK')
+          //REDIRECT *******
+          this.openLineChat()
+        })
+        .catch(error => {
+          console.log(error)
         })
     },
     async saveAudience() {
