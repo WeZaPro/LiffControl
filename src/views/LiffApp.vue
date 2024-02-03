@@ -112,8 +112,8 @@ export default {
     },
     async liffAdd() {
       await liff
-        // .init({ liffId: '1656824759-eK2GDxqA' })
-        .init({ liffId: process.env.VUE_APP_LIFF_APP_ID })
+        .init({ liffId: '1656824759-eK2GDxqA' })
+        // .init({ liffId: process.env.VUE_APP_LIFF_APP_ID }) //******* */
         .then(() => {
           if (!liff.isLoggedIn()) {
             liff.login()

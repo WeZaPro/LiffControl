@@ -103,8 +103,8 @@ export default {
   methods: {
     openLineChat() {
       console.log('open line oa--->')
-      //window.open('https://line.me/ti/p/@798hmctv', '_blank')
-      window.open(process.env.VUE_APP_LINE_OA, '_blank')
+      window.open('https://line.me/ti/p/@798hmctv', '_blank')
+      //window.open(process.env.VUE_APP_LINE_OA, '_blank')
     },
     // closeLiff() {
     //   this.result.close()
@@ -118,8 +118,8 @@ export default {
     },
     async liffAdd() {
       await liff
-        // .init({ liffId: '1656824759-8Qbgk0wJ' })
-        .init({ liffId: process.env.VUE_APP_LIFF_WEB_ID })
+        .init({ liffId: '1656824759-8Qbgk0wJ' })
+        //.init({ liffId: process.env.VUE_APP_LIFF_WEB_ID })
         .then(() => {
           if (!liff.isLoggedIn()) {
             liff.login()
