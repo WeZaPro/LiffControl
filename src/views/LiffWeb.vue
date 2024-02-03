@@ -103,7 +103,7 @@ export default {
   methods: {
     openLineChat() {
       console.log('open line oa--->')
-      window.open('https://line.me/ti/p/@798hmctv', '_blank')
+      window.open('https://line.me/ti/p/@798hmctv', '_blank') //******* */
       //window.open(process.env.VUE_APP_LINE_OA, '_blank')
     },
     // closeLiff() {
@@ -119,7 +119,7 @@ export default {
     async liffAdd() {
       await liff
         .init({ liffId: '1656824759-8Qbgk0wJ' })
-        //.init({ liffId: process.env.VUE_APP_LIFF_WEB_ID })
+        //.init({ liffId: process.env.VUE_APP_LIFF_WEB_ID }) //******* */
         .then(() => {
           if (!liff.isLoggedIn()) {
             liff.login()
@@ -151,7 +151,7 @@ export default {
 
                 //REDIRECT *******
                 //this.openLineChat()
-                this.findIpAndUpdateLineUid(this.profile.userId)
+                this.findIpAndUpdateLineUid(this.profile.userId, this._getIpAddress)
               } else {
                 var gtm_data_onMobile = {
                   botUserId: this.$route.query.botUserId, //use รับค่าจาก api
@@ -169,9 +169,9 @@ export default {
           this.occoredError = 'error:' + err
         })
     },
-    async findIpAndUpdateLineUid(getLineUid) {
+    async findIpAndUpdateLineUid(getLineUid, ip) {
       const setData = {
-        ipAddress: this._getIpAddress,
+        ipAddress: ip,
         lineUid: getLineUid,
       }
       let config = {
