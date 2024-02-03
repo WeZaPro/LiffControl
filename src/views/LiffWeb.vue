@@ -151,7 +151,7 @@ export default {
 
                 //REDIRECT *******
                 //this.openLineChat()
-                this.findIpAndUpdateLineUid(this.profile.userId, this._getIpAddress)
+                this.findIpAndUpdateLineUid(this.profile.userId)
               } else {
                 var gtm_data_onMobile = {
                   botUserId: this.$route.query.botUserId, //use รับค่าจาก api
@@ -169,9 +169,9 @@ export default {
           this.occoredError = 'error:' + err
         })
     },
-    async findIpAndUpdateLineUid(getLineUid, ip) {
+    async findIpAndUpdateLineUid(getLineUid) {
       const setData = {
-        ipAddress: ip,
+        ipAddress: this._getIpAddress,
         lineUid: getLineUid,
       }
       let config = {

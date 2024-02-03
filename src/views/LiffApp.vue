@@ -163,6 +163,7 @@ export default {
     async findLineUidAndSendGA(getLineUid) {
       const setData = {
         lineUid: getLineUid,
+        botUserId: this.qryStringBotUid,
       }
       let config = {
         method: 'post',
