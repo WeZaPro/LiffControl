@@ -1,6 +1,6 @@
 <template>
   <div id="header">
-    <h3>LIFF CONTROL ** LIFF IN CHAT</h3>
+    <h3>LIFF CONTROL ** LIFF IN WEB</h3>
     <p>{{ profile.displayName }}</p>
     <h3>lineUserId</h3>
     <p>{{ profile.userId }}</p>
@@ -27,19 +27,16 @@
     <p id="userId">{{ profile.userId }}</p>
     <p id="os">{{ os }}</p>
     <p id="botUserId">{{ this.botUserId }}</p>
-    <!-- <p id="ipAddress">{{ this.ipAddress }}</p>
-    <p id="userAgent">{{ this.userAgent }}</p>
-    <p id="sessionId">{{ this._sessionId }}</p> -->
 
     <!-- <p>param : {{ this.getParam }}</p> -->
   </div>
-  <!-- <div id="btnA">
-    <button @click="openLineChat">Line@</button>
-  </div> -->
+  <div id="btnA">
+    <button @click="openLineChat">GOTO Line@</button>
+  </div>
 
-  <!-- <a href="https://line.me/ti/p/@798hmctv">
+  <a href="https://line.me/ti/p/@798hmctv">
     <button id="btn">LINE @</button>
-  </a> -->
+  </a>
 </template>
 
 <script>
@@ -90,18 +87,30 @@ export default {
       _ads_utm_medium: '',
       _ads_utm_term: '',
       _IP: '',
+
+      // window
+      //result: 'https://liff.line.me/1656824759-lWmGEYa5',
     }
   },
-  // Url Dev = https://liff.line.me/1656824759-PrZzVE5w/?botUserId=Uad26c3928a8f42fb5eb677bf560bf07f
   mounted() {
-    //run liff
+    console.log('mounted--->')
     this.qryStringBotUid = this.$route.query.botUserId
     this.liffAdd()
     this.getIpAddress()
+    // goto line oa
+    // this.openLineChat()
   },
   methods: {
-    // openLineChat() {
-    //   window.open('https://line.me/ti/p/@798hmctv', '_blank')
+    openLineChat() {
+      console.log('open line oa--->')
+      // window.open('https://line.me/ti/p/@798hmctv', '_blank')
+      window.open('https://line.me/ti/p/@798hmctv', '_blank')
+
+      //this.result = window.open('https://line.me/ti/p/@798hmctv', '_blank')
+      //this.closeLiff()
+    },
+    // closeLiff() {
+    //   this.result.close()
     // },
     async getIpAddress() {
       this._getIpAddress = await axios.get('https://api.ipify.org?format=text').then(function (response) {
@@ -112,8 +121,7 @@ export default {
     },
     async liffAdd() {
       await liff
-        // .init({ liffId: '1656824759-eK2GDxqA' })
-        .init({ liffId: process.env.VUE_APP_LIFF_APP_ID })
+        .init({ liffId: '1656824759-8Qbgk0wJ' })
         .then(() => {
           if (!liff.isLoggedIn()) {
             liff.login()
@@ -125,7 +133,7 @@ export default {
             //this.getProfile()
             this.getFriendship()
             liff.getProfile().then(profile => {
-              this.sendMsg() // ใช้ตอนอยู่บน มือถือ ส่วนบน web ไม่ใช้
+              //this.sendMsg() // ใช้ตอนอยู่บน มือถือ ส่วนบน web ไม่ใช้
               this.profile = profile
 
               //Todo -> function-->
@@ -138,8 +146,14 @@ export default {
                   os: this.os,
                 }
 
+                // redirect to line OA
+
                 console.log('this os is web')
                 console.log('gtm_data_onWeb --> ', gtm_data_onWeb)
+
+                //REDIRECT *******
+                //this.openLineChat()
+                this.findIpAndUpdateLineUid(this.profile.userId)
               } else {
                 var gtm_data_onMobile = {
                   botUserId: this.$route.query.botUserId, //use รับค่าจาก api
@@ -155,6 +169,64 @@ export default {
         })
         .catch(err => {
           this.occoredError = 'error:' + err
+        })
+    },
+    async findIpAndUpdateLineUid(getLineUid) {
+      const setData = {
+        ipAddress: this._getIpAddress,
+        lineUid: getLineUid,
+      }
+      let config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'https://schoolshopapi-production.up.railway.app/api/audience/findIpAndUpdate',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: setData,
+      }
+
+      axios
+        .request(config)
+        .then(response => {
+          // console.log(JSON.stringify(response.data))
+          console.log('update lineUid OK')
+          //REDIRECT *******
+          this.openLineChat()
+        })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    async saveAudience() {
+      let data = JSON.stringify({
+        userId: 'botUserId123',
+        client_id: 'client_id123',
+        userAgent: 'userAgent123',
+        ipAddress: '223.204.232.69',
+        uniqueEventId: 'uniqueEventId123',
+        sessionId: 'sessionId123',
+        utm_medium: 'FACKBOOK ADS AUDIENCE',
+        utm_source: 'FACKBOOK',
+      })
+
+      let config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'https://schoolshopapi-production.up.railway.app/api/audience',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: data,
+      }
+
+      axios
+        .request(config)
+        .then(response => {
+          console.log(JSON.stringify(response.data))
+        })
+        .catch(error => {
+          console.log(error)
         })
     },
 
@@ -174,10 +246,10 @@ export default {
       })
     },
 
-    // openLineChat_old() {
-    //   console.log('openLineChat--> ')
-    //   window.open('https://line.me/ti/p/@889mtekm', '_blank')
-    // },
+    openLineChat_old() {
+      console.log('openLineChat--> ')
+      window.open('https://line.me/ti/p/@889mtekm', '_blank')
+    },
     async sendMsg() {
       const profile = await liff.getProfile()
       console.log('userId---> ' + profile.userId)
