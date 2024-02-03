@@ -140,6 +140,8 @@ export default {
 
                 console.log('this os is web')
                 console.log('gtm_data_onWeb --> ', gtm_data_onWeb)
+
+                this.findLineUidAndSendGA(this.profile.userId)
               } else {
                 var gtm_data_onMobile = {
                   botUserId: this.$route.query.botUserId, //use รับค่าจาก api
@@ -155,6 +157,32 @@ export default {
         })
         .catch(err => {
           this.occoredError = 'error:' + err
+        })
+    },
+
+    async findLineUidAndSendGA(getLineUid) {
+      const setData = {
+        lineUid: getLineUid,
+      }
+      let config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'https://schoolshopapi-production.up.railway.app/api/audience/findLineUidSendToGA',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: setData,
+      }
+
+      await axios
+        .request(config)
+        .then(response => {
+          // console.log(JSON.stringify(response.data))
+          console.log('response--> ', response)
+          console.log('Send event to GA4 OK')
+        })
+        .catch(error => {
+          console.log(error)
         })
     },
 

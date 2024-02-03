@@ -184,7 +184,7 @@ export default {
         data: setData,
       }
 
-      axios
+      await axios
         .request(config)
         .then(response => {
           // console.log(JSON.stringify(response.data))
@@ -244,10 +244,10 @@ export default {
       })
     },
 
-    openLineChat_old() {
-      console.log('openLineChat--> ')
-      window.open('https://line.me/ti/p/@889mtekm', '_blank')
-    },
+    // openLineChat_old() {
+    //   console.log('openLineChat--> ')
+    //   window.open('https://line.me/ti/p/@889mtekm', '_blank')
+    // },
     async sendMsg() {
       const profile = await liff.getProfile()
       console.log('userId---> ' + profile.userId)
