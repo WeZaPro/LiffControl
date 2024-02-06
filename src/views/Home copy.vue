@@ -1,44 +1,51 @@
 <template>
-  <div class="container text-center">
-    <div class="row">
-      <div class="col"></div>
-      <div class="col">
-        <div id="header">
-          <div class="card" style="width: 18rem">
-            <img src="../assets/student.png" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">ยินดีต้อนรับ สู่</h5>
-              <h5 class="card-title">School Shop</h5>
+  <div id="header">
+    <h3>HI CONGRATULATIONS LIFF IN WEB-Not use</h3>
+    <p>{{ profile.displayName }}</p>
+    <h3>lineUserId</h3>
+    <p>{{ profile.userId }}</p>
+    <h3>botUserId:</h3>
+    <p>{{ this.qryStringBotUid }}</p>
+    <h3>ipAddress</h3>
+    <p>{{ this._getIpAddress }}</p>
+    <h3>os</h3>
+    <p>{{ this.os }}</p>
 
-              <!-- <img
-                src="../assets/imgTest.png"
-                class="card-img-bottom"
-                style="width: 6rem; border-radius: 50%; overflow: hidden"
-              /> -->
-
-              <img
-                :src="
-                  profile.pictureUrl ? profile.pictureUrl : 'https://cdn-icons-png.flaticon.com/512/4042/4042356.png'
-                "
-                class="card-img-bottom"
-                style="width: 6rem; border-radius: 50%; overflow: hidden"
-              />
-
-              <p class="card-text">USER NAME</p>
-              <p>{{ profile.displayName }}</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col"></div>
-    </div>
+    <!-- <h3>userId</h3>
+    <p>{{ this.userId_queryString }}</p> -->
   </div>
+
+  <div id="app">
+    <!-- <img :src="profile.pictureUrl" width="150" height="150" /> -->
+    <img
+      :src="profile.pictureUrl ? profile.pictureUrl : 'https://cdn-icons-png.flaticon.com/512/4042/4042356.png'"
+      width="150"
+      height="150"
+    />
+
+    <p id="displayName">{{ profile.displayName }}</p>
+    <p id="userId">{{ profile.userId }}</p>
+    <p id="os">{{ os }}</p>
+    <p id="botUserId">{{ this.botUserId }}</p>
+    <!-- <p id="ipAddress">{{ this.ipAddress }}</p>
+    <p id="userAgent">{{ this.userAgent }}</p>
+    <p id="sessionId">{{ this._sessionId }}</p> -->
+
+    <!-- <p>param : {{ this.getParam }}</p> -->
+  </div>
+  <!-- <div id="btnA">
+    <button @click="openLineChat">Line@</button>
+  </div> -->
+
+  <a href="https://line.me/ti/p/@798hmctv">
+    <button id="btn">LINE @</button>
+  </a>
 </template>
 
 <script>
-import imgUrl from '@/assets/student.png'
+//import HelloWorld from "./components/HelloWorld.vue";
 import liff from '@line/liff'
+//import SetDataService from '../../services/SetDataService'
 import axios from 'axios'
 export default {
   name: 'App',
@@ -47,7 +54,6 @@ export default {
   },
   data() {
     return {
-      bannerImg: '',
       imageProfile: '',
       os: '',
       loggedIn: false,
@@ -60,6 +66,7 @@ export default {
       client_id: '',
       userId: '',
       userAgent: '',
+      //ipAddress_queryString: '',
       userId_queryString: '',
       ipAddress: '',
       _getIpAddress: '',
@@ -85,31 +92,27 @@ export default {
       _IP: '',
     }
   },
-  created() {
-    console.log('created--->')
-    this.bannerImg = imgUrl
-  },
+  // Url Dev = https://liff.line.me/1656824759-PrZzVE5w/?botUserId=Uad26c3928a8f42fb5eb677bf560bf07f
   mounted() {
-    console.log('mounted--->')
+    //run liff
     this.qryStringBotUid = this.$route.query.botUserId
     this.liffAdd()
     this.getIpAddress()
   },
   methods: {
     openLineChat() {
-      console.log('open line oa--->')
-      window.open('https://line.me/ti/p/@798hmctv', '_blank') //******* */
-      //link line SchoolShop = https://lin.ee/ouiG0Oe
+      window.open('https://line.me/ti/p/@798hmctv', '_blank')
     },
-
     async getIpAddress() {
       this._getIpAddress = await axios.get('https://api.ipify.org?format=text').then(function (response) {
+        //console.log('response IP data -->', response.data)
         return response.data
       })
+      //console.log('this._getIpAddress ', this._getIpAddress)
     },
     async liffAdd() {
       await liff
-        .init({ liffId: '1656824759-8Qbgk0wJ' })
+        .init({ liffId: '1656824759-lWmGEYa5' })
         .then(() => {
           if (!liff.isLoggedIn()) {
             liff.login()
@@ -121,6 +124,7 @@ export default {
             //this.getProfile()
             this.getFriendship()
             liff.getProfile().then(profile => {
+              //this.sendMsg() // ใช้ตอนอยู่บน มือถือ ส่วนบน web ไม่ใช้
               this.profile = profile
 
               //Todo -> function-->
@@ -133,14 +137,21 @@ export default {
                   os: this.os,
                 }
 
-                // redirect to line OA
-
                 console.log('this os is web')
                 console.log('gtm_data_onWeb --> ', gtm_data_onWeb)
 
-                //REDIRECT *******
-                //this.openLineChat()
-                this.findIpAndUpdateLineUid(this.profile.userId)
+                //alert('this os -->', liff.getOS())
+                // todo on web
+                // qry_ipAddress from Mongo *******
+                // findAndUpdate
+                // update gtm_data_onWeb to Mongo
+
+                //next after save db
+                // redirect to line app with qrcode
+
+                //https://line.me/ti/p/@798hmctv
+                //line://app/
+                //window.location.href = 'https://line.me/ti/p/@798hmctv'
               } else {
                 var gtm_data_onMobile = {
                   botUserId: this.$route.query.botUserId, //use รับค่าจาก api
@@ -149,70 +160,23 @@ export default {
                   ipAddress: this._getIpAddress,
                   os: this.os,
                 }
+                //alert('this os ==>', this.os)
                 console.log('this os is not web')
+                // todo on mobile
+                // get line bot id from queryString
+                // query lineUserId or ipAddress from db ******************************
+                // findAndUpdate
+
+                // update gtm_data_onMobile to Mongo
+
+                //next after save db
+                //redirect to chat room
               }
             })
           }
         })
         .catch(err => {
           this.occoredError = 'error:' + err
-        })
-    },
-    async findIpAndUpdateLineUid(getLineUid) {
-      const setData = {
-        ipAddress: this._getIpAddress,
-        lineUid: getLineUid,
-      }
-      let config = {
-        method: 'post',
-        maxBodyLength: Infinity,
-        url: 'https://schoolshopapi-production.up.railway.app/api/audience/findIpAndUpdate',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        data: setData,
-      }
-
-      await axios
-        .request(config)
-        .then(response => {
-          console.log('update lineUid OK')
-          //REDIRECT *******
-          this.openLineChat()
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    },
-    async saveAudience() {
-      let data = JSON.stringify({
-        userId: 'botUserId123',
-        client_id: 'client_id123',
-        userAgent: 'userAgent123',
-        ipAddress: '223.204.232.69',
-        uniqueEventId: 'uniqueEventId123',
-        sessionId: 'sessionId123',
-        utm_medium: 'FACKBOOK ADS AUDIENCE',
-        utm_source: 'FACKBOOK',
-      })
-
-      let config = {
-        method: 'post',
-        maxBodyLength: Infinity,
-        url: 'https://schoolshopapi-production.up.railway.app/api/audience',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        data: data,
-      }
-
-      axios
-        .request(config)
-        .then(response => {
-          console.log(JSON.stringify(response.data))
-        })
-        .catch(error => {
-          console.log(error)
         })
     },
 
@@ -232,6 +196,10 @@ export default {
       })
     },
 
+    openLineChat_old() {
+      console.log('openLineChat--> ')
+      window.open('https://line.me/ti/p/@889mtekm', '_blank')
+    },
     async sendMsg() {
       const profile = await liff.getProfile()
       console.log('userId---> ' + profile.userId)
@@ -268,24 +236,6 @@ export default {
   margin-top: 10px;
 }
 #header {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #444242;
-  margin-top: 10px;
-}
-
-#img {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #444242;
-  margin-top: 10px;
-}
-
-#subject {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

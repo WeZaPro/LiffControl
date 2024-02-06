@@ -1,38 +1,39 @@
 <template>
-  <div class="container text-center">
-    <div class="row">
-      <div class="col"></div>
-      <div class="col">
-        <div id="header">
-          <div class="card" style="width: 18rem">
-            <img src="../assets/student.png" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">ยินดีต้อนรับ สู่</h5>
-              <h5 class="card-title">School Shop</h5>
+  <div id="subject">
+    <h3>LIFF CONTROL ** LIFF IN WEB</h3>
+    <button class="btn btn-primary">Primary button</button>
+  </div>
 
-              <!-- <img
-                src="../assets/imgTest.png"
-                class="card-img-bottom"
-                style="width: 6rem; border-radius: 50%; overflow: hidden"
-              /> -->
+  <div id="img">
+    <img :src="this.bannerImg" width="400" height="500" />
+  </div>
 
-              <img
-                :src="
-                  profile.pictureUrl ? profile.pictureUrl : 'https://cdn-icons-png.flaticon.com/512/4042/4042356.png'
-                "
-                class="card-img-bottom"
-                style="width: 6rem; border-radius: 50%; overflow: hidden"
-              />
+  <div id="app">
+    <!-- <img :src="this.bannerImg" width="400" height="500" /> -->
+    <img
+      :src="profile.pictureUrl ? profile.pictureUrl : 'https://cdn-icons-png.flaticon.com/512/4042/4042356.png'"
+      width="150"
+      height="150"
+    />
 
-              <p class="card-text">USER NAME</p>
-              <p>{{ profile.displayName }}</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col"></div>
-    </div>
+    <!-- <p id="displayName">{{ profile.displayName }}</p>
+    <p id="userId">{{ profile.userId }}</p>
+    <p id="os">{{ os }}</p>
+    <p id="botUserId">{{ this.botUserId }}</p> -->
+
+    <!-- <p>param : {{ this.getParam }}</p> -->
+  </div>
+
+  <div id="header">
+    <p>{{ profile.displayName }}</p>
+    <!-- <h3>lineUserId</h3>
+    <p>{{ profile.userId }}</p>
+    <h3>botUserId:</h3>
+    <p>{{ this.qryStringBotUid }}</p>
+    <h3>ipAddress</h3>
+    <p>{{ this._getIpAddress }}</p>
+    <h3>os</h3>
+    <p>{{ this.os }}</p> -->
   </div>
 </template>
 
@@ -92,7 +93,7 @@ export default {
   mounted() {
     console.log('mounted--->')
     this.qryStringBotUid = this.$route.query.botUserId
-    this.liffAdd()
+    // this.liffAdd()
     this.getIpAddress()
   },
   methods: {
