@@ -28,7 +28,7 @@
 
               <!-- <p class="card-text">USER NAME</p>
               <p>{{ profile.displayName }}</p> -->
-              <a href="https://line.me/ti/p/@798hmctv" class="btn btn-primary">GOTO Line Chat</a>
+              <a href="https://lin.ee/ouiG0Oe" class="btn btn-primary">GOTO Line Chat</a>
             </div>
           </div>
         </div>
