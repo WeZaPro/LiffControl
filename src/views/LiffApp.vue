@@ -1,45 +1,41 @@
 <template>
-  <div id="header">
-    <h3>LIFF CONTROL ** LIFF IN CHAT</h3>
-    <p>{{ profile.displayName }}</p>
-    <h3>lineUserId</h3>
-    <p>{{ profile.userId }}</p>
-    <h3>botUserId:</h3>
-    <p>{{ this.qryStringBotUid }}</p>
-    <h3>ipAddress</h3>
-    <p>{{ this._getIpAddress }}</p>
-    <h3>os</h3>
-    <p>{{ this.os }}</p>
+  <div class="container text-center">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+        <div id="header">
+          <div class="card" style="width: 18rem">
+            <img src="../assets/student.png" class="card-img-top" alt="..." />
+            <div class="card-body">
+              <h5 class="card-title">ยินดีต้อนรับ</h5>
 
-    <!-- <h3>userId</h3>
-    <p>{{ this.userId_queryString }}</p> -->
+              <!-- <img
+                src="../assets/imgTest.png"
+                class="card-img-bottom"
+                style="width: 6rem; border-radius: 50%; overflow: hidden"
+              /> -->
+
+              <img
+                :src="
+                  profile.pictureUrl ? profile.pictureUrl : 'https://cdn-icons-png.flaticon.com/512/4042/4042356.png'
+                "
+                class="card-img-bottom"
+                style="width: 6rem; border-radius: 50%; overflow: hidden"
+              />
+
+              <p>คุณ {{ profile.displayName }} สู่</p>
+              <h5 class="card-title">School Shop</h5>
+
+              <!-- <p class="card-text">USER NAME</p>
+              <p>{{ profile.displayName }}</p> -->
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
   </div>
-
-  <div id="app">
-    <!-- <img :src="profile.pictureUrl" width="150" height="150" /> -->
-    <img
-      :src="profile.pictureUrl ? profile.pictureUrl : 'https://cdn-icons-png.flaticon.com/512/4042/4042356.png'"
-      width="150"
-      height="150"
-    />
-
-    <p id="displayName">{{ profile.displayName }}</p>
-    <p id="userId">{{ profile.userId }}</p>
-    <p id="os">{{ os }}</p>
-    <p id="botUserId">{{ this.botUserId }}</p>
-    <!-- <p id="ipAddress">{{ this.ipAddress }}</p>
-    <p id="userAgent">{{ this.userAgent }}</p>
-    <p id="sessionId">{{ this._sessionId }}</p> -->
-
-    <!-- <p>param : {{ this.getParam }}</p> -->
-  </div>
-  <!-- <div id="btnA">
-    <button @click="openLineChat">Line@</button>
-  </div> -->
-
-  <!-- <a href="https://line.me/ti/p/@798hmctv">
-    <button id="btn">LINE @</button>
-  </a> -->
 </template>
 
 <script>
@@ -92,7 +88,6 @@ export default {
       _IP: '',
     }
   },
-  // Url Dev = https://liff.line.me/1656824759-PrZzVE5w/?botUserId=Uad26c3928a8f42fb5eb677bf560bf07f
   mounted() {
     //run liff
     this.qryStringBotUid = this.$route.query.botUserId
@@ -100,9 +95,6 @@ export default {
     this.getIpAddress()
   },
   methods: {
-    // openLineChat() {
-    //   window.open('https://line.me/ti/p/@798hmctv', '_blank')
-    // },
     async getIpAddress() {
       this._getIpAddress = await axios.get('https://api.ipify.org?format=text').then(function (response) {
         //console.log('response IP data -->', response.data)
@@ -203,10 +195,6 @@ export default {
       })
     },
 
-    // openLineChat_old() {
-    //   console.log('openLineChat--> ')
-    //   window.open('https://line.me/ti/p/@889mtekm', '_blank')
-    // },
     async sendMsg() {
       const profile = await liff.getProfile()
       console.log('userId---> ' + profile.userId)

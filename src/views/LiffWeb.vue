@@ -28,7 +28,7 @@
 
               <!-- <p class="card-text">USER NAME</p>
               <p>{{ profile.displayName }}</p> -->
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+              <a href="https://lin.ee/ouiG0Oe" class="btn btn-primary">Line Chat</a>
             </div>
           </div>
         </div>
