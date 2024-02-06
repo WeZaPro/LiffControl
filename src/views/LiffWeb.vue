@@ -28,7 +28,7 @@
 
               <!-- <p class="card-text">USER NAME</p>
               <p>{{ profile.displayName }}</p> -->
-              <a href="https://line.me/R/home/public/profile?id=@675cfnyo" class="btn btn-primary">Line Chat</a>
+              <a href="https://line.me/R/ti/p/@675cfnyo" class="btn btn-primary">Line Chat</a>
             </div>
           </div>
         </div>
@@ -105,7 +105,7 @@ export default {
   methods: {
     openLineChat() {
       console.log('open line oa--->')
-      window.open('https://line.me/R/home/public/profile?id=@675cfnyo', '_blank') //******* */
+      window.open('https://line.me/R/ti/p/@675cfnyo', '_blank') //******* */
       //link line SchoolShop = https://lin.ee/ouiG0Oe
       // window.open('https://lin.ee/ouiG0Oe', '_blank') //******* */
     },
