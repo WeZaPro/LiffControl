@@ -113,6 +113,7 @@ export default {
     async liffAdd() {
       await liff
         .init({ liffId: '1656824759-eK2GDxqA' })
+        // .init({ liffId: process.env.VUE_APP_LIFF_APP_ID }) //******* */
         .then(() => {
           if (!liff.isLoggedIn()) {
             liff.login()
@@ -140,18 +141,7 @@ export default {
                 console.log('this os is web')
                 console.log('gtm_data_onWeb --> ', gtm_data_onWeb)
 
-                //alert('this os -->', liff.getOS())
-                // todo on web
-                // qry_ipAddress from Mongo *******
-                // findAndUpdate
-                // update gtm_data_onWeb to Mongo
-
-                //next after save db
-                // redirect to line app with qrcode
-
-                //https://line.me/ti/p/@798hmctv
-                //line://app/
-                //window.location.href = 'https://line.me/ti/p/@798hmctv'
+                this.findLineUidAndSendGA(this.profile.userId)
               } else {
                 var gtm_data_onMobile = {
                   botUserId: this.$route.query.botUserId, //use รับค่าจาก api
@@ -160,23 +150,40 @@ export default {
                   ipAddress: this._getIpAddress,
                   os: this.os,
                 }
-                //alert('this os ==>', this.os)
                 console.log('this os is not web')
-                // todo on mobile
-                // get line bot id from queryString
-                // query lineUserId or ipAddress from db ******************************
-                // findAndUpdate
-
-                // update gtm_data_onMobile to Mongo
-
-                //next after save db
-                //redirect to chat room
               }
             })
           }
         })
         .catch(err => {
           this.occoredError = 'error:' + err
+        })
+    },
+
+    async findLineUidAndSendGA(getLineUid) {
+      const setData = {
+        lineUid: getLineUid,
+        botUserId: this.qryStringBotUid,
+      }
+      let config = {
+        method: 'post',
+        maxBodyLength: Infinity,
+        url: 'https://schoolshopapi-production.up.railway.app/api/audience/findLineUidSendToGA',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: setData,
+      }
+
+      await axios
+        .request(config)
+        .then(response => {
+          // console.log(JSON.stringify(response.data))
+          console.log('response--> ', response)
+          console.log('Send event to GA4 OK')
+        })
+        .catch(error => {
+          console.log(error)
         })
     },
 
@@ -196,10 +203,10 @@ export default {
       })
     },
 
-    openLineChat_old() {
-      console.log('openLineChat--> ')
-      window.open('https://line.me/ti/p/@889mtekm', '_blank')
-    },
+    // openLineChat_old() {
+    //   console.log('openLineChat--> ')
+    //   window.open('https://line.me/ti/p/@889mtekm', '_blank')
+    // },
     async sendMsg() {
       const profile = await liff.getProfile()
       console.log('userId---> ' + profile.userId)

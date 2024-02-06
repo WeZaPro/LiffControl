@@ -30,13 +30,13 @@
 
     <!-- <p>param : {{ this.getParam }}</p> -->
   </div>
-  <div id="btnA">
+  <!-- <div id="btnA">
     <button @click="openLineChat">GOTO Line@</button>
   </div>
 
   <a href="https://line.me/ti/p/@798hmctv">
     <button id="btn">LINE @</button>
-  </a>
+  </a> -->
 </template>
 
 <script>
@@ -103,11 +103,8 @@ export default {
   methods: {
     openLineChat() {
       console.log('open line oa--->')
-      // window.open('https://line.me/ti/p/@798hmctv', '_blank')
-      window.open('https://line.me/ti/p/@798hmctv', '_blank')
-
-      //this.result = window.open('https://line.me/ti/p/@798hmctv', '_blank')
-      //this.closeLiff()
+      window.open('https://line.me/ti/p/@798hmctv', '_blank') //******* */
+      //window.open(process.env.VUE_APP_LINE_OA, '_blank')
     },
     // closeLiff() {
     //   this.result.close()
@@ -122,6 +119,7 @@ export default {
     async liffAdd() {
       await liff
         .init({ liffId: '1656824759-8Qbgk0wJ' })
+        //.init({ liffId: process.env.VUE_APP_LIFF_WEB_ID }) //******* */
         .then(() => {
           if (!liff.isLoggedIn()) {
             liff.login()
@@ -186,7 +184,7 @@ export default {
         data: setData,
       }
 
-      axios
+      await axios
         .request(config)
         .then(response => {
           // console.log(JSON.stringify(response.data))
@@ -246,10 +244,10 @@ export default {
       })
     },
 
-    openLineChat_old() {
-      console.log('openLineChat--> ')
-      window.open('https://line.me/ti/p/@889mtekm', '_blank')
-    },
+    // openLineChat_old() {
+    //   console.log('openLineChat--> ')
+    //   window.open('https://line.me/ti/p/@889mtekm', '_blank')
+    // },
     async sendMsg() {
       const profile = await liff.getProfile()
       console.log('userId---> ' + profile.userId)

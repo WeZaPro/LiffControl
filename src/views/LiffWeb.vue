@@ -1,6 +1,18 @@
+<script setup>
+import imgUrl from '@/assets/student.png'
+</script>
+
 <template>
-  <div id="header">
+  <div id="subject">
     <h3>LIFF CONTROL ** LIFF IN WEB</h3>
+  </div>
+
+  <div id="img">
+    <img :src="imgUrl" width="400" height="500" />
+    <!-- <img src:="img" width="53" height="53" alt=""> -->
+  </div>
+
+  <!-- <div id="header">
     <p>{{ profile.displayName }}</p>
     <h3>lineUserId</h3>
     <p>{{ profile.userId }}</p>
@@ -10,10 +22,7 @@
     <p>{{ this._getIpAddress }}</p>
     <h3>os</h3>
     <p>{{ this.os }}</p>
-
-    <!-- <h3>userId</h3>
-    <p>{{ this.userId_queryString }}</p> -->
-  </div>
+  </div> -->
 
   <div id="app">
     <!-- <img :src="profile.pictureUrl" width="150" height="150" /> -->
@@ -30,19 +39,10 @@
 
     <!-- <p>param : {{ this.getParam }}</p> -->
   </div>
-  <!-- <div id="btnA">
-    <button @click="openLineChat">GOTO Line@</button>
-  </div>
-
-  <a href="https://line.me/ti/p/@798hmctv">
-    <button id="btn">LINE @</button>
-  </a> -->
 </template>
 
 <script>
-//import HelloWorld from "./components/HelloWorld.vue";
 import liff from '@line/liff'
-//import SetDataService from '../../services/SetDataService'
 import axios from 'axios'
 export default {
   name: 'App',
@@ -63,7 +63,6 @@ export default {
       client_id: '',
       userId: '',
       userAgent: '',
-      //ipAddress_queryString: '',
       userId_queryString: '',
       ipAddress: '',
       _getIpAddress: '',
@@ -87,9 +86,6 @@ export default {
       _ads_utm_medium: '',
       _ads_utm_term: '',
       _IP: '',
-
-      // window
-      //result: 'https://liff.line.me/1656824759-lWmGEYa5',
     }
   },
   mounted() {
@@ -97,8 +93,6 @@ export default {
     this.qryStringBotUid = this.$route.query.botUserId
     this.liffAdd()
     this.getIpAddress()
-    // goto line oa
-    // this.openLineChat()
   },
   methods: {
     openLineChat() {
@@ -284,6 +278,24 @@ export default {
   margin-top: 10px;
 }
 #header {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #444242;
+  margin-top: 10px;
+}
+
+#img {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #444242;
+  margin-top: 10px;
+}
+
+#subject {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
