@@ -100,8 +100,9 @@ export default {
   methods: {
     openLineChat() {
       console.log('open line oa--->')
-      window.open('https://line.me/ti/p/@798hmctv', '_blank') //******* */
+      // window.open('https://line.me/ti/p/@798hmctv', '_blank') //******* */
       //link line SchoolShop = https://lin.ee/ouiG0Oe
+      window.open('https://lin.ee/ouiG0Oe', '_blank') //******* */
     },
 
     async getIpAddress() {
