@@ -12,7 +12,7 @@ import imgUrl from '@/assets/student.png'
   </div> -->
 
   <div id="app">
-    <!-- <img :src="profile.pictureUrl" width="150" height="150" /> -->
+    <img :src="this.bannerImg" width="400" height="500" />
     <img
       :src="profile.pictureUrl ? profile.pictureUrl : 'https://cdn-icons-png.flaticon.com/512/4042/4042356.png'"
       width="150"
@@ -41,6 +41,7 @@ import imgUrl from '@/assets/student.png'
 </template>
 
 <script>
+import imgUrl from '@/assets/student.png'
 import liff from '@line/liff'
 import axios from 'axios'
 export default {
@@ -50,6 +51,7 @@ export default {
   },
   data() {
     return {
+      bannerImg: '',
       imageProfile: '',
       os: '',
       loggedIn: false,
@@ -86,6 +88,10 @@ export default {
       _ads_utm_term: '',
       _IP: '',
     }
+  },
+  created() {
+    console.log('created--->')
+    this.bannerImg = imgUrl
   },
   mounted() {
     console.log('mounted--->')
