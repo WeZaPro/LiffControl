@@ -28,7 +28,7 @@
 
               <!-- <p class="card-text">USER NAME</p>
               <p>{{ profile.displayName }}</p> -->
-              <a href="https://line.me/R/ti/p/@675cfnyo" class="btn btn-primary">Line Chat</a>
+              <a href="https://line.me/ti/p/@675cfnyo" class="btn btn-primary">Line Chat</a>
             </div>
           </div>
         </div>
@@ -105,7 +105,7 @@ export default {
   methods: {
     openLineChat() {
       console.log('open line oa--->')
-      window.open('https://line.me/R/ti/p/@675cfnyo', '_blank') //******* */
+      window.open('https://line.me/ti/p/@675cfnyo', '_blank') //******* */
       //link line SchoolShop = https://lin.ee/ouiG0Oe
       // window.open('https://lin.ee/ouiG0Oe', '_blank') //******* */
     },
@@ -132,7 +132,8 @@ export default {
               this.profile = profile
 
               //Todo -> function-->
-              if ((this.os = 'web')) {
+              // if ((this.os = 'web')) {
+              if (this.profile.userId) {
                 var gtm_data_onWeb = {
                   botUserId: '', //use
                   lineUid: this.profile.userId, //use
@@ -150,14 +151,14 @@ export default {
                 //this.openLineChat()
                 this.findIpAndUpdateLineUid(this.profile.userId)
               } else {
-                var gtm_data_onMobile = {
-                  botUserId: this.$route.query.botUserId, //use รับค่าจาก api
-                  lineUid: this.profile.userId, //use
-                  lineDisplayName: this.profile.displayName, //use,
-                  ipAddress: this._getIpAddress,
-                  os: this.os,
-                }
-                console.log('this os is not web')
+                // var gtm_data_onMobile = {
+                //   botUserId: this.$route.query.botUserId, //use รับค่าจาก api
+                //   lineUid: this.profile.userId, //use
+                //   lineDisplayName: this.profile.displayName, //use,
+                //   ipAddress: this._getIpAddress,
+                //   os: this.os,
+                // }
+                console.log('Not get userId')
               }
             })
           }
