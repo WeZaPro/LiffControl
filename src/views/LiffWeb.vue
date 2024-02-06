@@ -28,7 +28,7 @@
 
               <!-- <p class="card-text">USER NAME</p>
               <p>{{ profile.displayName }}</p> -->
-              <a href="https://lin.ee/ouiG0Oe" class="btn btn-primary">Line Chat</a>
+              <a href="https://line.me/ti/p/@798hmctv" class="btn btn-primary">Line Chat</a>
             </div>
           </div>
         </div>
@@ -85,6 +85,10 @@ export default {
       _ads_utm_medium: '',
       _ads_utm_term: '',
       _IP: '',
+
+      //link
+      gotoLineChat: 'https://line.me/ti/p/@798hmctv',
+      // schoolShop =https://lin.ee/ouiG0Oe
     }
   },
   created() {
@@ -100,9 +104,9 @@ export default {
   methods: {
     openLineChat() {
       console.log('open line oa--->')
-      // window.open('https://line.me/ti/p/@798hmctv', '_blank') //******* */
+      window.open(this.gotoLineChat, '_blank') //******* */
       //link line SchoolShop = https://lin.ee/ouiG0Oe
-      window.open('https://lin.ee/ouiG0Oe', '_blank') //******* */
+      // window.open('https://lin.ee/ouiG0Oe', '_blank') //******* */
     },
 
     async getIpAddress() {
