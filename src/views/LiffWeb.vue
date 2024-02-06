@@ -28,7 +28,7 @@
 
               <!-- <p class="card-text">USER NAME</p>
               <p>{{ profile.displayName }}</p> -->
-              <a href="https://line.me/ti/p/@675cfnyo" class="btn btn-primary">Line Chat</a>
+              <a href="https://line.me/R/ti/p/@675cfnyo" class="btn btn-primary">Line Chat</a>
             </div>
           </div>
         </div>
@@ -88,7 +88,8 @@ export default {
 
       //link
       // gotoLineChat: 'https://line.me/ti/p/@798hmctv',
-      gotoLineChat: 'https://line.me/ti/p/@675cfnyo', // schoolShop =https://lin.ee/ouiG0Oe
+      //gotoLineChat: 'https://line.me/ti/p/@675cfnyo', // schoolShop =https://lin.ee/ouiG0Oe
+      gotoLineChat: 'https://line.me/R/ti/p/@675cfnyo',
     }
   },
   created() {
