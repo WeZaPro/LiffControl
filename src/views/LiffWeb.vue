@@ -1,6 +1,6 @@
-<script setup>
+<!-- <script setup>
 import imgUrl from '@/assets/student.png'
-</script>
+</script> -->
 
 <template>
   <div id="subject">
