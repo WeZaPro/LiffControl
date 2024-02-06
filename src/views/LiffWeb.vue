@@ -7,9 +7,9 @@ import imgUrl from '@/assets/student.png'
     <h3>LIFF CONTROL ** LIFF IN WEB</h3>
   </div>
 
-  <div id="img">
+  <!-- <div id="img">
     <img :src="imgUrl" width="400" height="500" />
-  </div>
+  </div> -->
 
   <div id="app">
     <!-- <img :src="profile.pictureUrl" width="150" height="150" /> -->
@@ -97,22 +97,17 @@ export default {
     openLineChat() {
       console.log('open line oa--->')
       window.open('https://line.me/ti/p/@798hmctv', '_blank') //******* */
-      //window.open(process.env.VUE_APP_LINE_OA, '_blank')
+      //link line SchoolShop = https://lin.ee/ouiG0Oe
     },
-    // closeLiff() {
-    //   this.result.close()
-    // },
+
     async getIpAddress() {
       this._getIpAddress = await axios.get('https://api.ipify.org?format=text').then(function (response) {
-        //console.log('response IP data -->', response.data)
         return response.data
       })
-      //console.log('this._getIpAddress ', this._getIpAddress)
     },
     async liffAdd() {
       await liff
         .init({ liffId: '1656824759-8Qbgk0wJ' })
-        //.init({ liffId: process.env.VUE_APP_LIFF_WEB_ID }) //******* */
         .then(() => {
           if (!liff.isLoggedIn()) {
             liff.login()
@@ -124,7 +119,6 @@ export default {
             //this.getProfile()
             this.getFriendship()
             liff.getProfile().then(profile => {
-              //this.sendMsg() // ใช้ตอนอยู่บน มือถือ ส่วนบน web ไม่ใช้
               this.profile = profile
 
               //Todo -> function-->
@@ -180,7 +174,6 @@ export default {
       await axios
         .request(config)
         .then(response => {
-          // console.log(JSON.stringify(response.data))
           console.log('update lineUid OK')
           //REDIRECT *******
           this.openLineChat()
@@ -237,10 +230,6 @@ export default {
       })
     },
 
-    // openLineChat_old() {
-    //   console.log('openLineChat--> ')
-    //   window.open('https://line.me/ti/p/@889mtekm', '_blank')
-    // },
     async sendMsg() {
       const profile = await liff.getProfile()
       console.log('userId---> ' + profile.userId)
