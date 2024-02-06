@@ -1,16 +1,16 @@
-<script setup>
+<!-- <script setup>
 import imgUrl from '@/assets/student.png'
-</script>
+</script> -->
 
 <template>
   <div id="subject">
     <h3>LIFF CONTROL ** LIFF IN WEB</h3>
   </div>
 
-  <div id="img">
+  <!-- <div id="img">
     <img :src="imgUrl" width="400" height="500" />
-    <!-- <img src:="img" width="53" height="53" alt=""> -->
-  </div>
+   
+  </div> -->
 
   <!-- <div id="header">
     <p>{{ profile.displayName }}</p>
