@@ -1,16 +1,31 @@
-<!-- <script setup>
+<script setup>
 import imgUrl from '@/assets/student.png'
-</script> -->
+</script>
 
 <template>
   <div id="subject">
     <h3>LIFF CONTROL ** LIFF IN WEB</h3>
   </div>
 
-  <!-- <div id="img">
+  <div id="img">
     <img :src="imgUrl" width="400" height="500" />
-   
-  </div> -->
+  </div>
+
+  <div id="app">
+    <!-- <img :src="profile.pictureUrl" width="150" height="150" /> -->
+    <img
+      :src="profile.pictureUrl ? profile.pictureUrl : 'https://cdn-icons-png.flaticon.com/512/4042/4042356.png'"
+      width="150"
+      height="150"
+    />
+
+    <!-- <p id="displayName">{{ profile.displayName }}</p>
+    <p id="userId">{{ profile.userId }}</p>
+    <p id="os">{{ os }}</p>
+    <p id="botUserId">{{ this.botUserId }}</p> -->
+
+    <!-- <p>param : {{ this.getParam }}</p> -->
+  </div>
 
   <div id="header">
     <p>{{ profile.displayName }}</p>
@@ -22,22 +37,6 @@ import imgUrl from '@/assets/student.png'
     <p>{{ this._getIpAddress }}</p>
     <h3>os</h3>
     <p>{{ this.os }}</p>
-  </div>
-
-  <div id="app">
-    <!-- <img :src="profile.pictureUrl" width="150" height="150" /> -->
-    <img
-      :src="profile.pictureUrl ? profile.pictureUrl : 'https://cdn-icons-png.flaticon.com/512/4042/4042356.png'"
-      width="150"
-      height="150"
-    />
-
-    <p id="displayName">{{ profile.displayName }}</p>
-    <p id="userId">{{ profile.userId }}</p>
-    <p id="os">{{ os }}</p>
-    <p id="botUserId">{{ this.botUserId }}</p>
-
-    <!-- <p>param : {{ this.getParam }}</p> -->
   </div>
 </template>
 
