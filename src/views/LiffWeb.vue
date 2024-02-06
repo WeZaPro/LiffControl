@@ -12,7 +12,7 @@ import imgUrl from '@/assets/student.png'
    
   </div> -->
 
-  <!-- <div id="header">
+  <div id="header">
     <p>{{ profile.displayName }}</p>
     <h3>lineUserId</h3>
     <p>{{ profile.userId }}</p>
@@ -22,7 +22,7 @@ import imgUrl from '@/assets/student.png'
     <p>{{ this._getIpAddress }}</p>
     <h3>os</h3>
     <p>{{ this.os }}</p>
-  </div> -->
+  </div>
 
   <div id="app">
     <!-- <img :src="profile.pictureUrl" width="150" height="150" /> -->
