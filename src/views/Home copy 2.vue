@@ -1,14 +1,34 @@
 <template>
   <div class="container text-center">
     <div class="row">
-      <div class="col"></div>
+      <div class="col">
+        <!-- <div class="card" style="width: 18rem">
+          <img src="../assets/student.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <imgCicle src="../assets/imgTest.png" class="card-img-buttom" alt="..." />
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div> -->
+      </div>
       <div class="col">
         <div id="header">
           <div class="card" style="width: 18rem">
+            <img src="../assets/student.png" class="card-img-top" alt="..." />
             <div class="card-body">
               <h5 class="card-title">ยินดีต้อนรับ สู่</h5>
               <h5 class="card-title">School Shop</h5>
 
+              <!-- <img src="../assets/manicon.png" class="card-img-bottom" alt="..." /> -->
+
+              <!-- <img
+                src="../assets/imgTest.png"
+                class="card-img-bottom"
+                style="width: 14rem; border-radius: 800px; overflow: hidden"
+              /> -->
               <img
                 src="../assets/imgTest.png"
                 class="card-img-bottom"
@@ -18,13 +38,38 @@
               <p class="card-text">USER NAME</p>
               <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
-            <img src="../assets/student.png" class="card-img-top" alt="..." />
           </div>
         </div>
       </div>
-      <div class="col"></div>
+      <div class="col">
+        <!-- <div class="card" style="width: 18rem">
+          <img src="../assets/imgTest.png" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">
+              Some quick example text to build on the card title and make up the bulk of the card's content.
+            </p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div> -->
+      </div>
     </div>
   </div>
+
+  <!-- <div class="card text-center">
+    <div id="header">
+      <div class="card" style="width: 24rem">
+        <img src="../assets/student.png" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">
+            Some quick example text to build on the card title and make up the bulk of the card's content.
+          </p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div> -->
 </template>
 
 <script>

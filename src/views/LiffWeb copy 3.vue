@@ -5,9 +5,15 @@
       <div class="col">
         <div id="header">
           <div class="card" style="width: 18rem">
-            <!-- <img src="../assets/student.png" class="card-img-top" alt="..." /> -->
+            <img src="../assets/student.png" class="card-img-top" alt="..." />
             <div class="card-body">
-              <h5 class="card-title">ขอขอบคุณสำหรับการติดต่อมา</h5>
+              <h5 class="card-title">ยินดีต้อนรับ</h5>
+
+              <!-- <img
+                src="../assets/imgTest.png"
+                class="card-img-bottom"
+                style="width: 6rem; border-radius: 50%; overflow: hidden"
+              /> -->
 
               <img
                 :src="
@@ -17,14 +23,13 @@
                 style="width: 6rem; border-radius: 50%; overflow: hidden"
               />
 
-              <p>คุณ {{ profile.displayName }}</p>
-              <!-- <h5 class="card-title">School Shop</h5> -->
+              <p>คุณ {{ profile.displayName }} สู่</p>
+              <h5 class="card-title">School Shop</h5>
 
               <!-- <p class="card-text">USER NAME</p>
               <p>{{ profile.displayName }}</p> -->
+              <a href="https://line.me/ti/p/@675cfnyo" class="btn btn-primary">Line Chat</a>
             </div>
-            <img src="../assets/student.png" class="card-img-top" alt="..." />
-            <a href="https://line.me/ti/p/@675cfnyo" class="btn btn-primary">Line Chat</a>
           </div>
         </div>
       </div>
@@ -182,7 +187,7 @@ export default {
         .then(response => {
           console.log('update lineUid OK')
           //REDIRECT *******
-          //this.openLineChat()
+          this.openLineChat()
         })
         .catch(error => {
           console.log(error)
