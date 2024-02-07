@@ -143,7 +143,7 @@ export default {
                 console.log('gtm_data_onWeb --> ', gtm_data_onWeb)
 
                 //REDIRECT *******
-                //this.openLineChat()
+                this.openLineChat()
                 this.findIpAndUpdateLineUid(this.profile.userId)
               } else {
                 // var gtm_data_onMobile = {

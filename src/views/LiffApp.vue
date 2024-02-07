@@ -5,7 +5,7 @@
       <div class="col">
         <div id="header">
           <div class="card" style="width: 18rem">
-            <img src="../assets/student.png" class="card-img-top" alt="..." />
+            <!-- <img src="../assets/student.png" class="card-img-top" alt="..." /> -->
             <div class="card-body">
               <h5 class="card-title">ยินดีต้อนรับ</h5>
 
@@ -23,8 +23,8 @@
                 style="width: 6rem; border-radius: 50%; overflow: hidden"
               />
 
-              <p>คุณ {{ profile.displayName }} สู่</p>
-              <h5 class="card-title">School Shop</h5>
+              <p>คุณ {{ profile.displayName }}</p>
+              <!-- <h5 class="card-title">School Shop</h5> -->
 
               <!-- <p class="card-text">USER NAME</p>
               <p>{{ profile.displayName }}</p> -->
