@@ -24,7 +24,7 @@
               <p>{{ profile.displayName }}</p> -->
             </div>
             <img src="../assets/student.png" class="card-img-top" alt="..." />
-            <a href="https://line.me/ti/p/@675cfnyo" class="btn btn-primary">Line Chat</a>
+            <a href="https://line.me/ti/p/@798hmctv" class="btn btn-primary">Line Chat</a>
           </div>
         </div>
       </div>
